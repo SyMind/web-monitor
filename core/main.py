@@ -1,5 +1,6 @@
 import threading
 import repository,common,performance
+from settings import DB_CONFIG
 
 class Monitor(threading.Thread):
   def __init__(self,web):
@@ -36,9 +37,10 @@ class Monitor(threading.Thread):
     repository.add_performance_timing(performance_timing)
 
 if __name__ == '__main__':
-  query = repository.get_web_list()
-  for web in query:
-    if common.isvalid(web.uri) and common.isaccess(web.uri):
-      monitor = Monitor(web)
-      monitor.setDaemon(True)
-      monitor.start()
+  # query = repository.get_web_list()
+  # for web in query:
+  #   if common.isvalid(web.uri) and common.isaccess(web.uri):
+  #     monitor = Monitor(web)
+  #     monitor.setDaemon(True)
+  #     monitor.start()
+  print(DB_CONFIG)
